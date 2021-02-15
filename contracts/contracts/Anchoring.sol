@@ -5,6 +5,7 @@ contract Anchoring
 {
 	function push(bytes32 senderHash, bytes32 receiverHash) external
 	{
+		require(anchors[senderHash] = 0x00, "Double spending attempt!");
 		anchors[senderHash] = receiverHash;
 	}
 
