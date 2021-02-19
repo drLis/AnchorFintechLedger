@@ -3,9 +3,9 @@ pragma solidity ^0.6.11;
 
 contract Anchoring
 {
-	function push(bytes32 senderHash, bytes32 receiverHash) external
+	function pushTransfer(bytes32 senderHash, bytes32 receiverHash) external
 	{
-		require(anchors[senderHash] = 0x00, "Double spending attempt!");
+		require(anchors[senderHash] == 0x00, "Double spending attempt!");
 		anchors[senderHash] = receiverHash;
 	}
 
