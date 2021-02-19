@@ -3,6 +3,11 @@ pragma solidity ^0.6.11;
 
 contract Anchoring
 {
+	constructor()
+	{
+		issuer = msg.sender;
+	}
+
 	function pushTransfer(bytes32 senderHash, bytes32 receiverHash) external
 	{
 		require(anchors[senderHash] == 0x00, "Double spending attempt!");
@@ -21,4 +26,6 @@ contract Anchoring
 
 	// hash(sender + id) => hash(id + receiver)
 	mapping (bytes32 => bytes32) public anchors;
+
+	address public issuer;
 }
